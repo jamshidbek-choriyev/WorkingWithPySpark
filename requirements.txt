@@ -1,0 +1,8 @@
+pyspark==3.5.4
+python-dotenv
+fastapi
+python-multipart
+uvicorn 
+pyiceberg
+minio
+pandas
