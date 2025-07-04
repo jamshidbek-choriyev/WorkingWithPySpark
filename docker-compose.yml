@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  spark:
+    image: tabulario/spark-iceberg:latest
+    container_name: spark-iceberg
+    ports:
+      - "4040:4041"   # Spark UI
+      - "4000:4001"   # Jupyter Notebook
+    environment:
+      - SPARK_MASTER_HOST=spark-iceberg
+      - PYSPARK_PYTHON=python3
+      - PYSPARK_DRIVER_PYTHON=jupyter
+      - PYSPARK_DRIVER_PYTHON_OPTS=notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+    command: >
+      bash -c "start-spark.sh && tail -f /dev/null"
+    volumes:
+      - ./workspace:/workspace
+    deploy:
+      resources:
+        limits:
+          cpus: '2'      # Maksimal 2 ta CPU yadrosi ishlatiladi
+          memory: 4G     # Maksimal 4GB RAM ishlatiladi
+        reservations:
+          cpus: '1'      # Kamida 1 ta CPU yadrosi ajratiladi
+          memory: 2G     # Kamida 2GB RAM ajratiladi
+
+networks:
+  default:
+    driver: bridge

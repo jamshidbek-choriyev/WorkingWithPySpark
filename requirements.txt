@@ -1,8 +1,16 @@
-pyspark==3.5.4
-python-dotenv
-fastapi
-python-multipart
-uvicorn 
-pyiceberg
-minio
-pandas
+# FastAPI va asosiy kutubxonalar
+
+uvicorn[standard]==0.24.0
+
+numpy==1.24.3
+
+# HTTP so'rovlar uchun
+httpx==0.25.2
+requests==2.31.0
+
+# JSON va fayl ishlash
+python-multipart==0.0.6
+python-json-logger==2.0.7
+
+# Java Development Kit (agar kerak bo'lsa)
+# Eslatma: PySpark ishlashi uchun Java kerak
