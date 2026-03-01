@@ -1,4 +1,3 @@
-# FastAPI va asosiy kutubxonalar
 
 uvicorn[standard]==0.24.0
 
